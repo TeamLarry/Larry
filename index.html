@@ -1,50 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Welcome to Larry</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 100px;
-    background: #222;
-    color: white;
-  }
-  h1 {
-    animation: slideIn 1s ease forwards;
-    opacity: 0;
-  }
-  @keyframes slideIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Larry — AI Chatbot</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
     }
-    from {
-      opacity: 0;
-      transform: translateY(-50px);
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
     }
-  }
-  button {
-    margin-top: 40px;
-    padding: 12px 24px;
-    font-size: 16px;
-    cursor: pointer;
-    background: #00bcd4;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    transition: transform 0.2s ease;
-  }
-  button:hover {
-    transform: scale(1.1);
-  }
-</style>
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    button {
+      background: white;
+      border: none;
+      color: #764ba2;
+      padding: 1rem 2rem;
+      font-size: 1.25rem;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #eee;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to Larry!</h1>
-  <p>Your smart chatbot assistant.</p>
-  <button onclick="alert('Let’s get started!')">Get Started</button>
+  <h1 class="animate__animated animate__fadeInDown">Welcome to Larry</h1>
+  <p class="animate__animated animate__fadeInUp animate__delay-1s">
+    Your AI-powered chatbot assistant.
+  </p>
+  <button class="animate__animated animate__pulse animate__infinite">
+    Download Larry
+  </button>
 </body>
 </html>
