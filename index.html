@@ -2,56 +2,261 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Larry — AI Chatbot</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Added .0 for completeness -->
+  <title>Larry — Your Intelligent AI Chatbot Assistant</title>
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
   />
   <style>
+    :root {
+      --primary-color-start: #667eea;
+      --primary-color-end: #764ba2;
+      --text-color-light: #f0f4f8; /* Slightly softer white */
+      --text-color-dark: #333;
+      --button-bg: white;
+      --button-text-color: #764ba2;
+      --button-hover-bg: #f1f1f1;
+      --section-bg: rgba(0, 0, 0, 0.1);
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: white;
+      font-family: var(--font-family);
+      background: linear-gradient(135deg, var(--primary-color-start), var(--primary-color-end));
+      color: var(--text-color-light);
       margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      overflow-x: hidden; /* Prevent horizontal scroll on small screens if content overflows slightly */
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header/Hero Section */
+    .hero {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 80vh; /* Adjusted for more content below */
       text-align: center;
+      padding: 40px 20px;
     }
-    h1 {
-      font-size: 4rem;
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem); /* Responsive font size */
       margin-bottom: 0.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
     }
-    p {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
+
+    .hero .subtitle {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      opacity: 0.9;
     }
-    button {
-      background: white;
+
+    .cta-button {
+      background: var(--button-bg);
       border: none;
-      color: #764ba2;
-      padding: 1rem 2rem;
-      font-size: 1.25rem;
-      border-radius: 30px;
+      color: var(--button-text-color);
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 50px; /* Fully rounded */
       cursor: pointer;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-      transition: background 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      text-decoration: none; /* In case it's an <a> tag later */
+      display: inline-block; /* For proper padding and margin if it's an <a> */
     }
-    button:hover {
-      background: #eee;
+
+    .cta-button:hover, .cta-button:focus { /* Added focus state */
+      background: var(--button-hover-bg);
+      transform: translateY(-3px); /* Subtle lift effect */
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
     }
+
+    /* Features Section */
+    .features-section {
+      padding: 60px 20px;
+      background-color: var(--section-bg);
+    }
+
+    .features-section h2 {
+      text-align: center;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05); /* Slightly more transparent */
+      padding: 25px;
+      border-radius: 12px;
+      text-align: left;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .feature-card .icon { /* Placeholder for icons */
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--text-color-light); /* Or an accent color */
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: var(--text-color-light);
+      font-weight: 600;
+    }
+
+    .feature-card p {
+      font-size: 1rem;
+      opacity: 0.85;
+    }
+
+    /* About Section */
+    .about-section {
+        padding: 60px 20px;
+        /* background: var(--primary-color-end); Slightly different for contrast if needed */
+    }
+    .about-section h2 {
+        text-align: center;
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        margin-bottom: 20px;
+    }
+    .about-section p {
+        font-size: 1.1rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        opacity: 0.9;
+        margin-bottom: 30px;
+    }
+
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: rgba(0, 0, 0, 0.2);
+      font-size: 0.9rem;
+    }
+
+    footer p {
+        margin: 0;
+        opacity: 0.7;
+    }
+
+    /* Animate.css Overrides / Enhancements if needed */
+    .animate__delay-05s { --animate-delay: 0.5s; } /* Custom delay if needed */
+
   </style>
 </head>
 <body>
-  <h1 class="animate__animated animate__fadeInDown">Welcome to Larry</h1>
-  <p class="animate__animated animate__fadeInUp animate__delay-1s">
-    Your AI-powered chatbot assistant.
-  </p>
-  <button class="animate__animated animate__pulse animate__infinite">
-    Download Larry
-  </button>
+
+  <header class="hero">
+    <div class="container">
+      <h1 class="animate__animated animate__fadeInDown">Welcome to Larry</h1>
+      <p class="subtitle animate__animated animate__fadeInUp animate__delay-05s">
+        Your intelligent, personalized AI chatbot assistant designed to streamline your tasks, provide instant information, and engage in natural conversation.
+      </p>
+      <a href="#download" class="cta-button animate__animated animate__pulse animate__delay-1s animate__infinite"> <!-- Made it an anchor for now -->
+        Get Larry Now
+      </a>
+    </div>
+  </header>
+
+  <section class="about-section" id="about">
+      <div class="container">
+          <h2>What is Larry?</h2>
+          <p class="animate__animated animate__fadeInUp" data-animate-on-scroll> <!-- Add data attribute for potential JS scroll animation later -->
+              Larry is more than just a chatbot. He's a cutting-edge AI companion built with advanced natural language processing and machine learning capabilities. Larry learns from your interactions to provide increasingly relevant and personalized assistance, making your digital life easier and more productive.
+          </p>
+      </div>
+  </section>
+
+  <section class="features-section" id="features">
+    <div class="container">
+      <h2>Why Choose Larry?</h2>
+      <div class="features-grid">
+        <div class="feature-card animate__animated animate__fadeInUp" data-animate-on-scroll>
+          <div class="icon">🧠</div> <!-- Replace with actual icons later -->
+          <h3>Intelligent Conversations</h3>
+          <p>Engage in fluid, human-like dialogues. Larry understands context, remembers past interactions, and adapts to your communication style.</p>
+        </div>
+        <div class="feature-card animate__animated animate__fadeInUp animate__delay-05s" data-animate-on-scroll>
+          <div class="icon">⚡️</div>
+          <h3>Instant Assistance</h3>
+          <p>Get quick answers to your questions, help with scheduling, information retrieval, and task automation, all in real-time.</p>
+        </div>
+        <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s" data-animate-on-scroll>
+          <div class="icon">🎨</div>
+          <h3>Personalized Experience</h3>
+          <p>Larry can be customized with different personalities and themes. He remembers your preferences to offer a truly tailored experience.</p>
+        </div>
+         <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s" data-animate-on-scroll> <!-- Example for more features -->
+          <div class="icon">🔒</div>
+          <h3>Secure & Private</h3>
+          <p>Your conversations and data are handled with the utmost respect for privacy and security (Specify details if applicable).</p>
+        </div>
+         <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s" data-animate-on-scroll>
+          <div class="icon">🖥️</div>
+          <h3>Cross-Platform (Future)</h3>
+          <p>Access Larry on your favorite devices. (Highlight if it's a desktop app for now, and future plans).</p>
+        </div>
+         <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s" data-animate-on-scroll>
+          <div class="icon">⚙️</div>
+          <h3>Customizable Themes</h3>
+          <p>Personalize Larry's appearance with a variety of themes to match your style or mood. (Connects to your app feature!)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Placeholder for a "Download" or "Get Started" section if the button links here -->
+  <section id="download" class="hero" style="min-height: 50vh; background: rgba(0,0,0,0.15);">
+      <div class="container">
+          <h2 class="animate__animated animate__fadeInDown">Ready to Meet Larry?</h2>
+          <p class="subtitle animate__animated animate__fadeInUp animate__delay-05s">
+            Download the application for your desktop and experience the future of AI assistance.
+          </p>
+          <!-- This button would ideally trigger a real download -->
+          <button class="cta-button animate__animated animate__pulse animate__infinite">
+            Download for Desktop
+          </button>
+          <p style="font-size: 0.9rem; margin-top: 20px; opacity: 0.7;">(Available for Windows, macOS, Linux - specify as appropriate)</p>
+      </div>
+  </section>
+
+
+  <footer>
+    <div class="container">
+      <p>© 2024 YourName/LarryAI. All rights reserved.
+        <!-- <br />For support, contact <a href="mailto:support@larryai.com" style="color: var(--text-color-light);">support@larryai.com</a> -->
+      </p>
+    </div>
+  </footer>
+
 </body>
 </html>
